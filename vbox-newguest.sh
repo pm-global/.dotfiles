@@ -1,9 +1,9 @@
 #!/bin/bash
-# this is a bash script for quickly setting up a VirtualBox Ubuntu guest
+# this is a bash script for quickly setting up a new VirtualBox Ubuntu guest VM
 #	1. Update OS to latest, clean up, set vars
 #	2. Install packages required for Guest Additions, prompt for CD Install
 #	3. If kernel mod is present, add user to vbox group
-# 4. Prompt to configure VM for guest/host interaction, advise reboot
+# 	4. Prompt to configure VM settings + manual reboot
 
 SECTION_BORDER_ART="\n["================================="]\n"
 printf "$SECTION_BORDER_ART"
@@ -53,6 +53,6 @@ else
 	printf "The group members of "$VBOX_GROUPNAME" are now:\n"
 	grep -i --color "$VBOX_GROUPNAME" /etc/group
 fi
-printf "\nA logout or reboot is required to update group membership.\n"
-printf "Confirm that Guest-Host interaction (clipboard, sharing, drag/drop)is configured on the hypervisor.\n"
+printf "\nA reboot is required to load the kernel modules and update group membership.\n"
+printf "\nConfirm the hypervisor has Guest-Host interaction configured (clipboard, sharing, drag/drop).\n"
 printf "$SECTION_BORDER_ART"
