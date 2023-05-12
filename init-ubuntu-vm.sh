@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # this is a bash script for quickly setting up a VirtualBox Ubuntu guest
 #	1. Update OS to latest, clean up, set vars
 #	2. Install packages required for Guest Additions, prompt for CD Install
