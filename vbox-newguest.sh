@@ -6,6 +6,7 @@
 # 	4. Prompt to configure VM settings + manual reboot
 
 SECTION_BORDER_ART="\n["================================="]\n"
+SECTION_DIVIDER="\n--------------------\n"
 printf "$SECTION_BORDER_ART"
 printf "Setup VirtualBox Ubuntu VMs"
 printf "$SECTION_BORDER_ART"
@@ -18,7 +19,7 @@ sudo apt-get -qq dist-upgrade -y
 printf "Some cleanup...\n"
 sudo apt-get -qq autoclean -y
 sudo apt-get -qq autoremove -y
-printf "Updates done\n"
+printf "Initial updates done\n"
 
 # set script vars from updated state
 LINUX_HEADER_VER="linux-headers-$(uname -r)"
