@@ -70,17 +70,10 @@ printf "Checking github ssh authentication. 'yes' if prompted to approve new ssh
 ssh -T git@github.com
 printf "\nIf that didn't work, check the key on GitHub\n"
 
-printf "Switch to ssh for repo\n"
-( cd ~/.dotfiles ; git remote set-url origin git@github.com:sgvertical/.dotfiles.git)
-
-printf "Enter the public username for the following service"
-# read -p "id+username for users.noreply.github.com : " GHID
-
 git config --global user.email none@none.com
-git config --global user.name none
+git config --global user.name PM
 
-# read -p "\ngit global email: " GIT_MAIL
-# read -p "\ngit global name: " GIT_NAME
-# does it work without the email and name? sshkey only
-# git config --global user.email "$GIT_MAIL"
-# git config --global user.name "$GIT_NAME"
+printf "Switch to ssh for repo\n"
+( cd ~/.dotfiles ; git remote set-url origin git@github.com:pm-global/.dotfiles.git )
+
+
