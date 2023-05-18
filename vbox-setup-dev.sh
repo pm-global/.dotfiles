@@ -30,14 +30,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 printf $SECTION_BORDER_ART #-------------------------------------
-printf "Install latest node?\n"
-read -n 1 -s -r -p "enter for 'no', any other input will install node: " NODE_CHOICE
-
-if [ "$NODE_CHOICE" != "" ]
-then
-	printf "\nInstalling latest Node\n"
-	nvm install node
-fi
+printf "Installing the latest node\n"
+nvm install node
 
 printf $SECTION_BORDER_ART #-------------------------------------
 # ssh keys and agent - interactive to be more useful
@@ -76,11 +70,12 @@ printf "Checking github ssh authentication. 'yes' if prompted to approve new ssh
 ssh -T git@github.com
 printf "\nIf that didn't work, check the key on GitHub\n"
 
-printf "\nChanging repo origin from http to ssh\n"
-(cd $HOME/.dotfiles/; git -v git@github.com:sgvertical/.dotfiles.git)
+printf "Switch to ssh for repo\n"
+git config -add origin git@github.com:sgvertical/.dotfiles.git)
+git config -delete origin https://github.com/sgvertical/.dotfiles.git
 
-read -p "Git global email: " GIT_MAIL
-read -p "Git global name: " GIT_USER
-
-git config --global user.email "$GIT_MAIL"
-git config --global user.name "$GIT_NAME"
+read -p "\ngit global email: " GIT_MAIL
+read -p "\ngit global name: " GIT_NAME
+# does it work without the email and name? sshkey only
+# git config --global user.email "$GIT_MAIL"
+# git config --global user.name "$GIT_NAME"
