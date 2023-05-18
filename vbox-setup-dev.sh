@@ -9,7 +9,7 @@ printf "Install dev programs and some config"
 printf $SECTION_BORDER_ART
 
 PACKAGE_INSTALL_LIST="curl ripgrep xclip"
-SNAP_INSTALL_LIST="nvim" --classic # looking for that version
+SNAP_INSTALL_LIST="nvim --classic" # looking for that version
 printf "\nInstalling packages: $PACKAGE_INSTALL_LIST\n"
 sudo apt-get install $PACKAGE_INSTALL_LIST
 
@@ -71,11 +71,16 @@ ssh -T git@github.com
 printf "\nIf that didn't work, check the key on GitHub\n"
 
 printf "Switch to ssh for repo\n"
-git config -add origin git@github.com:sgvertical/.dotfiles.git)
-git config -delete origin https://github.com/sgvertical/.dotfiles.git
+( cd ~/.dotfiles ; git remote set-url origin git@github.com:sgvertical/.dotfiles.git)
 
-read -p "\ngit global email: " GIT_MAIL
-read -p "\ngit global name: " GIT_NAME
+printf "Enter the public username for the following service"
+# read -p "id+username for users.noreply.github.com : " GHID
+
+git config --global user.email none@none.com
+git config --global user.name none
+
+# read -p "\ngit global email: " GIT_MAIL
+# read -p "\ngit global name: " GIT_NAME
 # does it work without the email and name? sshkey only
 # git config --global user.email "$GIT_MAIL"
 # git config --global user.name "$GIT_NAME"
