@@ -9,7 +9,7 @@ printf "Install dev programs and some config"
 printf $SECTION_BORDER_ART
 
 PACKAGE_INSTALL_LIST="curl ripgrep xclip"
-SNAP_INSTALL_LIST="nvim"
+SNAP_INSTALL_LIST="nvim" --classic # looking for that version
 printf "\nInstalling packages: $PACKAGE_INSTALL_LIST\n"
 sudo apt-get install $PACKAGE_INSTALL_LIST
 
@@ -67,13 +67,8 @@ printf $SECTION_BORDER_ART #-------------------------------------
 sudo cat "$SSH_DIR/id_rsa.pub"
 printf $SECTION_BORDER_ART #-------------------------------------
 printf "Go here: GitHub.com -> Profile Icon -> Settings -> SSH & GPG Keys -> New SSH Key\n"
-read -n 1 -s -r -p "After adding this key to github, propagation takes about ~1 minute, enter to start a timer and test."
+read -n 1 -s -r -p "After adding this key to github, propagation takes about ~1 minute. Enter to continue."
 printf "\n"  # additional \n because the read command doesn't give one
-
-# timer to wait for github propagation delay
-SECONDS=70
-printf "\nWaiting $SECONDS seconds before testing github\n"
-awk -v t=$SECONDS 'BEGIN{t=int(t*1000); printf "Elapsed Time (HH:MM:SS): %d:%02d:%02d\n", t/3600000, t/60000%60, t/1000%60}'
 
 printf $SECTION_BORDER_ART #-------------------------------------
 # connect to github, prompt to add key
@@ -81,5 +76,11 @@ printf "Checking github ssh authentication. 'yes' if prompted to approve new ssh
 ssh -T git@github.com
 printf "\nIf that didn't work, check the key on GitHub\n"
 
-printf "\nChanging dotfiles origin from http to ssh\n"
+printf "\nChanging repo origin from http to ssh\n"
 (cd $HOME/.dotfiles/; git -v git@github.com:sgvertical/.dotfiles.git)
+
+read -p "Git global email: " GIT_MAIL
+read -p "Git global name: " GIT_USER
+
+git config --global user.email "$GIT_MAIL"
+git config --global user.name "$GIT_NAME"
