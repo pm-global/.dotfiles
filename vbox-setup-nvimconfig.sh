@@ -14,6 +14,6 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
 printf "\n\nTo finish nvim setup:\n"
-printf "1) open ~/.config/nvim/lua/dev/packer.sync in nvim\n"
+printf "1) open ~/.config/nvim/lua/dev/packer.lua in nvim\n"
 printf "2) use the :so command then :PackerSync\n"
 printf "3) restart nvim, confirm binds, commands, colors, autocomplete\n"

@@ -71,9 +71,9 @@ ssh -T git@github.com
 printf "\nIf that didn't work, check the key on GitHub\n"
 
 git config --global user.email none@none.com
-git config --global user.name PM
+git config --global user.name none
 
-printf "Switch to ssh for repo\n"
+printf "Switch to ssh for repo\n" # pull into private file?
 ( cd ~/.dotfiles ; git remote set-url origin git@github.com:pm-global/.dotfiles.git )
 
 
