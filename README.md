@@ -7,9 +7,9 @@ set up a new VirtualBox guest VM (only tested on Ubuntu 23)
     - detect correct installation (vboxguest kernel mod exists?)
     - configure vbox sharing group
 
-set up a VM for dev work
+set up Ubuntu for dev work (JS)
     - tuned for javascript and web development
-        - nvm at the moment, but easy to add more
+    - nvm at the moment, but easy to add more
     - nvm/node, neovim 0.9, others
     - multiple interactive prompts
         - ssh keygen + strong defaults (blast on through with confidence!)
@@ -23,4 +23,5 @@ load preferences into neovim
     - lifted almost totally from github.com/thePrimeagen
     - extensive remaps, configs, packages
     - includes git, large undo history, treesitter, lsps, mason, etc.
-    -
+
+confirmed that the dev and nvim scripts work on Ubuntu wsl.
