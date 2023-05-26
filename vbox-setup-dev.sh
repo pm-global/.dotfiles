@@ -8,7 +8,7 @@ printf $SECTION_BORDER_ART #-------------------------------------
 printf "Install dev programs and some config"
 printf $SECTION_BORDER_ART
 
-PACKAGE_INSTALL_LIST="curl ripgrep xclip tmux"
+PACKAGE_INSTALL_LIST="curl ripgrep xclip tmux xz-utils"
 SNAP_INSTALL_LIST="nvim --classic" # looking for that version
 printf "\nInstalling packages: $PACKAGE_INSTALL_LIST\n"
 sudo apt-get install $PACKAGE_INSTALL_LIST
@@ -16,6 +16,24 @@ sudo apt-get install $PACKAGE_INSTALL_LIST
 printf "$SECTION_DIVIDER" #---------
 printf "\nInstalling snaps: $SNAP_INSTALL_LIST\n"
 sudo snap install $SNAP_INSTALL_LIST
+
+printf "$SECTION_DIVIDER" #---------
+printf "\nInstalling patched font\n"
+FONT_PACK="Lilex.tar.xz"
+FONT_LINK="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.1/Lilex.tar.xz"
+FONT_CLEANUP="*.txt *.md *.xz"
+FONT_FILE="LilexNerdFontMono-Regular.ttf"
+FONT_DIR="$HOME/.fonts/"
+if [ ! -f "$FONT_DIR$FONT_FILE" ];
+    then
+        # bash code to download this file and unpack it.
+        mkdir -p $FONT_DIR
+        wget -nc --directory-prefix=$FONT_DIR $FONT_LINK
+        cd $FONT_DIR && tar -xf $FONT_PACK
+        rm $FONT_CLEANUP
+    else
+        printf "\nFont found, skipping install\n"
+fi
 
 # Get node manager
 printf $SECTION_BORDER_ART #-------------------------------------
