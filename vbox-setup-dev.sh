@@ -8,7 +8,7 @@ printf $SECTION_BORDER_ART #-------------------------------------
 printf "Install dev programs and some config"
 printf $SECTION_BORDER_ART
 
-PACKAGE_INSTALL_LIST="curl ripgrep xclip"
+PACKAGE_INSTALL_LIST="curl ripgrep xclip tmux"
 SNAP_INSTALL_LIST="nvim --classic" # looking for that version
 printf "\nInstalling packages: $PACKAGE_INSTALL_LIST\n"
 sudo apt-get install $PACKAGE_INSTALL_LIST
